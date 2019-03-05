@@ -1,0 +1,19 @@
+{
+  "name": "chromecast-calendar",
+  "version": "1.0.0",
+  "description": "reads data for upcoming events, creates graphics for those events, then uploads those graphics to google photos for consumption by a chromecast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdoyle/chromecast-calendar.git"
+  },
+  "author": "frankd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fdoyle/chromecast-calendar/issues"
+  },
+  "homepage": "https://github.com/fdoyle/chromecast-calendar#readme"
+}
