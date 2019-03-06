@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/fdoyle/chromecast-calendar/issues"
   },
-  "homepage": "https://github.com/fdoyle/chromecast-calendar#readme"
+  "homepage": "https://github.com/fdoyle/chromecast-calendar#readme",
+  "dependencies": {
+    "googleapis": "^27.0.0",
+    "node-html-parser": "^1.1.12",
+    "puppeteer": "^1.13.0"
+  }
 }
