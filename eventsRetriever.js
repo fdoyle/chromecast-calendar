@@ -24,9 +24,17 @@ exports.getUpcomingEvents = function (auth, callback) {
         console.log("upcoming events");
         const eventList = events.map((event, i) => {
             const start = event.start.dateTime || event.start.date;
-            const root = parse(event.description); // google calendar autoformats this to html, so all urls become anchors
-            imageUrl = root.querySelector('a').text; //take the first anchor, assume it's our image
-            console.log(JSON.stringify(event));
+            const root = parse(event.description); //google calendar conveniently turns urls into html anchors so you can click them!
+            // console.log(`found event: ${event.summary} ${start} ${event.description}`);
+            var maybeAnchor = root.querySelector('a')
+            var imageUrl;
+            if(maybeAnchor != null){
+                imageUrl = maybeAnchor.text; 
+            } else {
+                imageUrl = event.description; //but only after you press enter. if you paste it in and immediately save, it doesn't.  
+            }
+            console.log(imageUrl)
+
             return {
                 date: start,
                 title: event.summary,

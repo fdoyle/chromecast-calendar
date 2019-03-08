@@ -11,7 +11,7 @@ const {
 
 
 
-const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly', 'https://www.googleapis.com/auth/photoslibrary'];
+const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly', 'https://www.googleapis.com/auth/photoslibrary.sharing','https://www.googleapis.com/auth/photoslibrary'];
 
 const TOKEN_PATH = "token.json";
 

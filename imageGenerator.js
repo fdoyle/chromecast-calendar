@@ -2,9 +2,9 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 exports.generateImage = async (titleText, startText, imageUrl) => {
-    console.log(`Creating image ${titleText} ${startText} ${imageUrl}`);
+    console.log(`Creating image ${titleText} ${startText}`);
     const browser = await puppeteer.launch({
-        'args' : [ '--disable-web-security' ],
+        'args': ['--disable-web-security'],
     });
     const page = await browser.newPage();
     const contentHtml = fs.readFileSync('./event.html', 'utf8');
@@ -13,10 +13,9 @@ exports.generateImage = async (titleText, startText, imageUrl) => {
         height: 1080
     });
     const loaded = page.waitForNavigation({
-        waitUntil: 'load'
+        waitUntil: 'networkidle0'
     });
     await page.setContent(contentHtml);
-    console.log("hello world");
     await page.evaluate((titleText, startText, imageUrl) => {
         let image = document.querySelector('#image');
         image.src = imageUrl;
@@ -27,11 +26,14 @@ exports.generateImage = async (titleText, startText, imageUrl) => {
     }, titleText, startText, imageUrl);
     await loaded
     const underscoredTitle = titleText.replace(/ /g, "_");
-    const path = `images/${underscoredTitle}.png`
+    filename = `${underscoredTitle}.png`
+    const path = `images/${filename}`
     await page.screenshot({
         path: path
     });
     await browser.close();
-    console.log(path);
-    return path;
+    return {
+        path: path,
+        filename: filename
+    };
 }
